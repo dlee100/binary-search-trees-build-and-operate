@@ -1,1 +1,146 @@
 # text file of the written code that was tried and used but now not needed.
+
+I, 114
+            I, 42
+            I, 43
+            R, 37
+            I, 100
+            I, 202
+            I, 166
+            R, 48
+            I, 49
+            I, 75
+            R, 112
+            D
+            E
+            I, 5
+            I, 17
+            I, 31
+            I, 56
+            I, 91
+            I, 164
+            I, 171
+            I, 290
+            I, 301
+            I, 307
+            I, 321
+            I, 333
+            F, 307
+            F, 322
+            F, 12
+            R, 301
+            D
+            E
+            I, 925
+            I, 814
+            I, 11
+            I, 775
+            I, 96
+            I, 999
+            I, 4
+            I, 212
+            I, 800
+            I, 930
+            I, 82
+            I, 90
+            I, 88
+            I, 950
+            F, 90
+            F, 89
+            D
+            I, 780
+            I, 325
+            I, 290
+            I, 777
+            R, 775
+            R, 96
+            R, 930
+            D
+
+
+
+BST = BinarySearchTree()
+for n in A5trans:
+    n = n.split(',')
+    if n[0] == 'I': # INSERT
+        # Insert a node into the BST or establish the BST if empty.
+        # Return True if inserted, otherwise return False (if node value is already in the tree).
+        #BST.insert(n[1])
+        if BST.root is None:
+            BST.add_root(n[1])
+            #return True
+        else:
+            n[1] = int(n[1])
+            if n[1] < BST.element:
+                BST.add_left(n[1])
+            elif n[1] > BST.element:
+                BST.add_right(n[1])
+            #return True
+        # if inserted, return True
+        # if not inserted, return False
+    elif n[0] == 'F': # FIND
+        # Find a node with a given value in the tree.
+        # Return the value by displaying it, otherwise throw the NotInBST exception.
+        BST.subtree_search(n[1])
+        # if value found, return value
+        # if value not found, throw exception
+    elif n[0] == 'R': # REMOVE
+        # If found, remove the value from the BST.
+        # Return the value that was found and removed, otherwise throw the NotInBST exception
+        BST.delete(n[1])
+    elif n[0] == 'D': # DISPLAY *
+        # Display/Print the entire tree in a given format and the number of nodes and height at the time of display.
+        print('Number of nodes: ', len(BST))
+        print('Height of tree: ', BST.depth(BST.find_max))
+        #pass
+    elif n[0] == 'E': # ERASE
+        # Erase the current tree by instantiating a new tree object for the next transactions.
+        self.__init__
+    else:
+        pass
+print(BST.size)
+
+
+
+
+
+
+      # "The matter is to manipulate the POINTERS correctly."
+      # Deleting a node with two children: replace deleted node with smallest node in the RIGHT subtree
+      # and remove the smallest from the RIGHT subtree (or largest in the LEFT subtree).  
+        if not found:
+            raise NotInBST ('Element is not in the tree')
+        # if element to be deleted is found
+        else: 
+            # if k (element to be deleted) has no parent node
+            if self.is_root == True:  
+                # delete node
+                deleteThis.replace(k, k.right) # k's right child becomes new root
+                # move elements up
+                # </> ?
+            # if k is not root    
+            else: 
+                # if k has no children
+                if self.is_leaf == True: 
+                    # setting parent of k's child pointer to None
+                    # -- self.parent.replace(k, None) 
+                    # delete node
+                    deleteThis.replace(k, None)
+                # if not leaf
+                else: 
+                    # if k (element to be deleted) has one child
+                    if self.num_children == 1: 
+                        # reset parent node of k to point to k's child as its child
+                        # </> ?
+                        #self.find_min
+                        # delete node
+                        deleteThis.replace(k, k.left or k.right)
+                    # if k (element to be deleted) has two children
+                    elif self.num_children == 2: 
+                        # set k's left child as child of k's parent node. set k's right child as child of left node.
+                        # </> ?
+                        deleteThis.replace(k, k.left.find_min)
+                        # </>
+            # if deleted node had no parent node, set parent's pointer to None
+            # if deleted node had one child, reset parent node of deleted node to point to child
+            # if deleted node had two children, one sibling becomes a parent?
